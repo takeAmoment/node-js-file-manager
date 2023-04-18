@@ -5,6 +5,7 @@ import os from "os";
 import { getList } from './fs/getList.js';
 import { catFile } from './fs/catFile.js';
 import { addFile } from "./fs/addFile.js";
+import { renameFile } from './fs/renameFile.js';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -63,8 +64,12 @@ stdin.on('data', async (data) => {
     case "cat":
       await catFile(findWorkingDirectory(), args[0], showWorkingDirectory);
       break;
-     case "add":
+    case "add":
       await addFile(findWorkingDirectory(), args[0]);
+      showWorkingDirectory();
+      break;
+    case "rn":
+      await renameFile(findWorkingDirectory(), args);
       showWorkingDirectory();
       break;
     default: 
