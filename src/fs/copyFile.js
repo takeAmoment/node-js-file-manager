@@ -67,5 +67,8 @@ export const copyFile = async (workingDirectory, props) => {
     } else {
       console.log(error);
     }
+    return;
   }
+
+  return fullFilePath;
 }
