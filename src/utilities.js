@@ -8,8 +8,8 @@ export const checkisAbsolutePath = (pathName) => {
 export const checkIsExist = async (fullPath) => {
   try {
     await fs.access(fullPath);
+    return true;
   } catch (error) {
-    console.log('Operation failed. This file does not exist.');
-    return;
+    return false;
   }
 }

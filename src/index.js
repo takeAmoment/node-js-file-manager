@@ -6,6 +6,7 @@ import { getList } from './fs/getList.js';
 import { catFile } from './fs/catFile.js';
 import { addFile } from "./fs/addFile.js";
 import { renameFile } from './fs/renameFile.js';
+import { copyFile } from "./fs/copyFile.js";
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -70,6 +71,10 @@ stdin.on('data', async (data) => {
       break;
     case "rn":
       await renameFile(findWorkingDirectory(), args);
+      showWorkingDirectory();
+      break;
+    case "cp":
+      await copyFile(findWorkingDirectory(), args);
       showWorkingDirectory();
       break;
     default: 
