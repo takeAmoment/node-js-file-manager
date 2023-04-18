@@ -13,3 +13,16 @@ export const checkIsExist = async (fullPath) => {
     return false;
   }
 }
+
+export const createFilePath = (workingDirectory, filePath) => {
+  const filePathIsAbsolute = checkisAbsolutePath(filePath);
+  let fullFilePath;
+
+  if (filePathIsAbsolute) {
+    fullFilePath = filePath;
+  } else {
+    fullFilePath = path.resolve(workingDirectory, filePath);
+  }
+  
+  return fullFilePath;
+};

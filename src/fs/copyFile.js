@@ -1,20 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { pipeline } from 'stream/promises';
-import { checkIsExist, checkisAbsolutePath } from '../utilities.js';
-
-const createFilePath = (workingDirectory, filePath) => {
-  const filePathIsAbsolute = checkisAbsolutePath(filePath);
-  let fullFilePath;
-
-  if (filePathIsAbsolute) {
-    fullFilePath = filePath;
-  } else {
-    fullFilePath = path.resolve(workingDirectory, filePath);
-  }
-  
-  return fullFilePath;
-};
+import { checkIsExist, checkisAbsolutePath, createFilePath } from '../utilities.js';
 
 const createPathToNewFile = (workingDirectory, pathToDirectory, fileName) => {
   const pathToDirectoryIsAbsolute = checkisAbsolutePath(pathToDirectory);
