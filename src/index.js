@@ -4,6 +4,7 @@ import path from "path";
 import os from "os";
 import { getList } from './fs/getList.js';
 import { catFile } from './fs/catFile.js';
+import { addFile } from "./fs/addFile.js";
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -61,7 +62,10 @@ stdin.on('data', async (data) => {
       break;
     case "cat":
       await catFile(findWorkingDirectory(), args[0], showWorkingDirectory);
-      
+      break;
+     case "add":
+      await addFile(findWorkingDirectory(), args[0]);
+      showWorkingDirectory();
       break;
     default: 
       stdout.write('Invalid input\n');
