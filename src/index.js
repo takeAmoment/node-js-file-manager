@@ -1,7 +1,8 @@
 import { findArgs } from "./findArgs.js";
 import { stdout, stdin } from "process";
-import path, { isAbsolute } from "path";
+import path from "path";
 import os from "os";
+import { getList } from './fs/list.js';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -28,7 +29,7 @@ stdout.write(`Welcome to the File Manager, ${username}!\n`);
 showWorkingDirectory();
 
 
-stdin.on('data', (data) => {
+stdin.on('data', async (data) => {
   const str = data.toString().trim();
 
   if (str === ".exit") {
@@ -51,6 +52,10 @@ stdin.on('data', (data) => {
     case "cd": 
       const dirParth = args[0];
       process.chdir(dirParth);
+      showWorkingDirectory();
+      break;
+    case "ls": 
+      await getList(findWorkingDirectory());
       showWorkingDirectory();
       break;
     default: 
