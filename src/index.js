@@ -2,7 +2,8 @@ import { findArgs } from "./findArgs.js";
 import { stdout, stdin } from "process";
 import path from "path";
 import os from "os";
-import { getList } from './fs/list.js';
+import { getList } from './fs/getList.js';
+import { catFile } from './fs/catFile.js';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -44,7 +45,7 @@ stdin.on('data', async (data) => {
       const homedir = os.homedir();
       if (findWorkingDirectory() !== homedir) {
         process.chdir('..');
-        showWorkingDirectory();
+        showWorkingDirectory(); 
       } else {
         stdout.write('Invalid input\n');
       }
@@ -52,11 +53,15 @@ stdin.on('data', async (data) => {
     case "cd": 
       const dirParth = args[0];
       process.chdir(dirParth);
-      showWorkingDirectory();
+      showWorkingDirectory(); 
       break;
     case "ls": 
       await getList(findWorkingDirectory());
-      showWorkingDirectory();
+      showWorkingDirectory(); 
+      break;
+    case "cat":
+      await catFile(findWorkingDirectory(), args[0], showWorkingDirectory);
+      
       break;
     default: 
       stdout.write('Invalid input\n');
