@@ -8,6 +8,7 @@ import { addFile } from "./fs/addFile.js";
 import { renameFile } from './fs/renameFile.js';
 import { copyFile } from "./fs/copyFile.js";
 import { moveFile } from "./fs/moveFile.js";
+import { removeFile } from "./fs/removeFile.js";
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -80,6 +81,10 @@ stdin.on('data', async (data) => {
       break;
     case "mv":
       await moveFile(findWorkingDirectory(), args);
+      showWorkingDirectory();
+      break;
+    case "rm":
+      await removeFile(findWorkingDirectory(), args[0]);
       showWorkingDirectory();
       break;
     default: 
