@@ -48,6 +48,11 @@ stdin.on('data', (data) => {
         stdout.write('Invalid input\n');
       }
       break;
+    case "cd": 
+      const dirParth = args[0];
+      process.chdir(dirParth);
+      showWorkingDirectory();
+      break;
     default: 
       stdout.write('Invalid input\n');
   }
