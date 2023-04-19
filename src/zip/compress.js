@@ -43,7 +43,7 @@ export const compress = async (workingDirectory, props) => {
 
   try {
     const gzip = zlib.createBrotliCompress();
-    const readableStream = fs.createReadStream(fullSourcePath, 'utf-8');
+    const readableStream = fs.createReadStream(fullSourcePath);
     const writableStream = fs.createWriteStream(fullDestinationPath);
 
     await pipeline(readableStream, gzip, writableStream);
