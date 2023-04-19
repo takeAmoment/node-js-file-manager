@@ -10,6 +10,7 @@ import { copyFile } from "./fs/copyFile.js";
 import { moveFile } from "./fs/moveFile.js";
 import { removeFile } from "./fs/removeFile.js";
 import { getOsInfo } from "./os/getOsInfo.js";
+import { getHash } from "./hash/getHash.js";
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -92,8 +93,12 @@ stdin.on('data', async (data) => {
       await getOsInfo(args[0]);
       showWorkingDirectory();
       break;
+    case "hash":
+      await getHash(findWorkingDirectory(), args[0], showWorkingDirectory);
+      break;
     default: 
       stdout.write('Invalid input\n');
+      showWorkingDirectory();
   }
 });
 
