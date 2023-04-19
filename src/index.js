@@ -11,6 +11,7 @@ import { moveFile } from "./fs/moveFile.js";
 import { removeFile } from "./fs/removeFile.js";
 import { getOsInfo } from "./os/getOsInfo.js";
 import { getHash } from "./hash/getHash.js";
+import { compress } from './zip/compress.js';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -95,6 +96,10 @@ stdin.on('data', async (data) => {
       break;
     case "hash":
       await getHash(findWorkingDirectory(), args[0], showWorkingDirectory);
+      break;
+    case "compress":
+      await compress(findWorkingDirectory(), args);
+      showWorkingDirectory();
       break;
     default: 
       stdout.write('Invalid input\n');
