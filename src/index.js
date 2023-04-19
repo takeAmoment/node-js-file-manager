@@ -12,6 +12,7 @@ import { removeFile } from "./fs/removeFile.js";
 import { getOsInfo } from "./os/getOsInfo.js";
 import { getHash } from "./hash/getHash.js";
 import { compress } from './zip/compress.js';
+import { decompress } from "./zip/decompress.js";
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -99,6 +100,10 @@ stdin.on('data', async (data) => {
       break;
     case "compress":
       await compress(findWorkingDirectory(), args);
+      showWorkingDirectory();
+      break;
+    case "decompress":
+      await decompress(findWorkingDirectory(), args);
       showWorkingDirectory();
       break;
     default: 
