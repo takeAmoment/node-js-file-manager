@@ -34,9 +34,9 @@ __You are currently in path_to_working_directory__
 ### List of operations and their syntax:
 
 Navigation & working directory (nwd): 
-* Go upper from current directory (when you are in the root folder this operation shouldn't change working directory)
+* Go upper from current directory (when you are in the root folder this operation shouldn't change working directory):
 `up`
-* Go to dedicated folder from current directory (path_to_directory can be relative or absolute)
+* Go to dedicated folder from current directory (path_to_directory can be relative or absolute:
 `cd path_to_directory`
 * Print in console list of all files and folders in current directory. List should contain:
      - list should contain files and folder names (for files with extension);
@@ -57,23 +57,23 @@ Navigation & working directory (nwd):
     Delete file:
     `rm path_to_file`
 * Operating system info (prints following information in console)
-    - Get EOL (default system End-Of-Line) and print it to console
+    - Get EOL (default system End-Of-Line) and print it to console:
     `os --EOL`
-    - Get host machine CPUs info (overall amount of CPUS plus model and clock rate (in GHz) for each of them) and print it to console
+    - Get host machine CPUs info (overall amount of CPUS plus model and clock rate (in GHz) for each of them) and print it to console:
     `os --cpus`
-    - Get home directory and print it to console
+    - Get home directory and print it to console:
     `os --homedir`
-    Get current system user name (Do not confuse with the username that is set when the application starts) and print it to console
+    - Get current system user name (Do not confuse with the username that is set when the application starts) and print it to console:
     `os --username`
-    - Get CPU architecture for which Node.js binary has compiled and print it to console
+    - Get CPU architecture for which Node.js binary has compiled and print it to console:
     `os --architecture`
 * Hash calculation
-    - Calculate hash for file and print it into console
+    - Calculate hash for file and print it into console:
     `hash path_to_file`
 * Compress and decompress operations
-    - Compress file (using Brotli algorithm, should be done using Streams API)
+    - Compress file (using Brotli algorithm, should be done using Streams API):
     `compress path_to_file path_to_destination`
-    - Decompress file (using Brotli algorithm, should be done using Streams API)
+    - Decompress file (using Brotli algorithm, should be done using Streams API):
     `decompress path_to_file path_to_destination`
-    
+
 NB! After decompressing of previously compressed file result should not differ with originally compressed file
