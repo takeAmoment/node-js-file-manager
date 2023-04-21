@@ -34,9 +34,9 @@ __You are currently in path_to_working_directory__
 ### List of operations and their syntax:
 
 Navigation & working directory (nwd): 
-* Go upper from current directory (when you are in the root folder this operation shouldn't change working directory):
+* Go upper from current directory (when you are in the root folder this operation shouldn't change working directory):  
 `up`
-* Go to dedicated folder from current directory (path_to_directory can be relative or absolute:
+* Go to dedicated folder from current directory (path_to_directory can be relative or absolute):  
 `cd path_to_directory`
 * Print in console list of all files and folders in current directory. List should contain:
      - list should contain files and folder names (for files with extension);
@@ -54,7 +54,7 @@ Navigation & working directory (nwd):
     `cp path_to_file path_to_new_directory`
     - Move file (same as copy but initial file is deleted, copying part should be done using Readable and Writable streams):  
     `mv path_to_file path_to_new_directory`
-    Delete file:  
+    - Delete file:  
     `rm path_to_file`
 * Operating system info (prints following information in console)
     - Get EOL (default system End-Of-Line) and print it to console:  
