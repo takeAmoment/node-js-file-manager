@@ -1,6 +1,6 @@
 import fs from 'fs';
-import path from 'path';
 import { stdout } from 'process';
+import { createFilePath } from '../utilities.js';
 
 export const catFile = async (workingDirectory, pathToFile, showWorkingDirectory) => {
   if (!pathToFile) {
@@ -9,7 +9,7 @@ export const catFile = async (workingDirectory, pathToFile, showWorkingDirectory
   }
 
   try {
-    const filePath = path.resolve(workingDirectory, pathToFile);
+    const filePath = createFilePath(workingDirectory, pathToFile);
     const readableStream = fs.createReadStream(filePath, 'utf-8');
 
     readableStream.on('data', (data) => {
