@@ -52,5 +52,6 @@ export const compress = async (workingDirectory, props) => {
     if (error.code === 'ENOENT') {
       console.log('Operation failed: this file or directory does not exist');
     } 
+    console.log(`Operation failed: ${error}`);
   }
 };
