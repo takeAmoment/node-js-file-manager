@@ -51,7 +51,7 @@ stdin.on('data', async (data) => {
 
   switch (command) {
     case "up": 
-      goUp(findWorkingDirectory(), homedir);
+      goUp();
       showWorkingDirectory();
       break;
     case "cd": 
