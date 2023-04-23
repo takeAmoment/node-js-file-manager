@@ -21,19 +21,16 @@ export const getHash = async (workingDirectory, filePath, showWorkingDirectory) 
     readableStream.on('end', () => {
       const fileHash = hash.digest('hex');
       console.log(`File hash: ${fileHash}`);
-      showWorkingDirectory();
-
     });
 
     readableStream.on('error', (error) => {
       if (error.code === 'ENOENT') {
         console.log('Operation failed: this file or directory does not exist');
-        showWorkingDirectory();
       } 
     });
     
   } catch (error) {
     console.log(`Operation failed: ${error}`);
-    showWorkingDirectory();
   }
+  showWorkingDirectory();
 };
