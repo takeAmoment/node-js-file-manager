@@ -2,6 +2,7 @@ import { findArgs } from "./utilities.js";
 import { stdout, stdin } from "process";
 import os from "os";
 import { goToTheDir } from "./navigation/cd.js";
+import { goUp } from "./navigation/up.js";
 import { getList } from './fs/getList.js';
 import { catFile } from './fs/catFile.js';
 import { addFile } from "./fs/addFile.js";
@@ -50,12 +51,8 @@ stdin.on('data', async (data) => {
 
   switch (command) {
     case "up": 
-      if (findWorkingDirectory() !== homedir) {
-        process.chdir('..');
-        showWorkingDirectory(); 
-      } else {
-        stdout.write('Invalid input: you are in the root folder\n');
-      }
+      goUp(findWorkingDirectory(), homedir);
+      showWorkingDirectory();
       break;
     case "cd": 
       const dirParth = args[0];
