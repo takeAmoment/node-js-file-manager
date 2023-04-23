@@ -3,6 +3,11 @@ import fs from 'fs/promises';
 import { createFilePath } from '../utilities.js';
 
 export const removeFile = async (workingDirectory, filePath) => {
+  if (!filePath) {
+    console.log('Invalid input');
+    return;
+  }
+  
   const pathToFile = path.normalize(filePath);
 
   let fullFilePath = createFilePath(workingDirectory, pathToFile);
