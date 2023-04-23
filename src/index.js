@@ -1,4 +1,4 @@
-import { findArgs } from "./findArgs.js";
+import { findArgs } from "./utilities.js";
 import { stdout, stdin } from "process";
 import os from "os";
 import { goToTheDir } from "./navigation/cd.js";
