@@ -18,7 +18,7 @@ const createPathToNewFile = (workingDirectory, pathToDirectory, fileName) => {
 
 export const copyFile = async (workingDirectory, props) => {
   if (props.length < 2) {
-    console.log('Operation failed');
+    console.log('Invalid input');
     return;
   }
 
@@ -52,7 +52,7 @@ export const copyFile = async (workingDirectory, props) => {
     if (error.code === 'ENOENT') {
       console.log('Operation failed: this file or directory does not exist');
     } else {
-      console.log(error);
+      console.log(`Operation failed: ${error}`);
     }
     return;
   }
