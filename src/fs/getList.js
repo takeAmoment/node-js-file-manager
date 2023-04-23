@@ -1,5 +1,23 @@
 import { readdir } from 'fs/promises';
 
+const sortResult = (results) => {
+  results.sort((a, b) => {
+    if (a.type < b.type) {
+      return -1;
+    } else if (a.type > b.type) {
+      return 1;
+    } else {
+      if (a.name < b.name) {
+        return -1;
+      } else if (a.name > b.name) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+  });
+};
+
 export const getList = async (workingDirectory) => {
   const dirName = workingDirectory;
   const results = [];
@@ -14,14 +32,12 @@ export const getList = async (workingDirectory) => {
         obj["type"] = "directory";
       } else if (file.isFile()) {
         obj["type"] = "file";
-      } else {
-        throw new Error(`${file.name} is not a file or directory`);
-      }
-      results.push(obj);
+      } 
+      results.push(obj); 
     })
-
+    sortResult(results);
     console.table(results);
   } catch (error) {
-    console.log(error);
+    console.log(`Operation failed: ${error}`);
   }
 }
