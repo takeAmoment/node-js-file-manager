@@ -1,7 +1,7 @@
 import { findArgs } from "./findArgs.js";
 import { stdout, stdin } from "process";
-import path from "path";
 import os from "os";
+import { goToTheDir } from "./navigation/cd.js";
 import { getList } from './fs/getList.js';
 import { catFile } from './fs/catFile.js';
 import { addFile } from "./fs/addFile.js";
@@ -13,14 +13,13 @@ import { getOsInfo } from "./os/getOsInfo.js";
 import { getHash } from "./hash/getHash.js";
 import { compress } from './zip/compress.js';
 import { decompress } from "./zip/decompress.js";
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const argsObject = findArgs();
 const user = argsObject["username"];
 const username = user.slice(0, 1).toUpperCase() + user.slice(1)
+const homedir = os.homedir();
+
+process.chdir(homedir);
 
 const findWorkingDirectory = () => {
   return process.cwd();
@@ -51,17 +50,16 @@ stdin.on('data', async (data) => {
 
   switch (command) {
     case "up": 
-      const homedir = os.homedir();
       if (findWorkingDirectory() !== homedir) {
         process.chdir('..');
         showWorkingDirectory(); 
       } else {
-        stdout.write('Invalid input\n');
+        stdout.write('Invalid input: you are in the root folder\n');
       }
       break;
     case "cd": 
       const dirParth = args[0];
-      process.chdir(dirParth);
+      await goToTheDir(dirParth);
       showWorkingDirectory(); 
       break;
     case "ls": 
