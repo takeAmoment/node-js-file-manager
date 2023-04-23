@@ -17,9 +17,9 @@ import { decompress } from "./zip/decompress.js";
 
 const argsObject = findArgs();
 const user = argsObject["username"];
-const username = user.slice(0, 1).toUpperCase() + user.slice(1)
-const homedir = os.homedir();
+const username = user.slice(0, 1).toUpperCase() + user.slice(1);
 
+const homedir = os.homedir();
 process.chdir(homedir);
 
 const findWorkingDirectory = () => {

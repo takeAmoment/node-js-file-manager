@@ -11,6 +11,8 @@ export const findArgs = () => {
         const key = argArr[0].slice(2);
         const value = argArr[1];
         argsObject[key]=value;
+      } else {
+        throw new Error('Incorrect input');
       }
   });
   
